@@ -37,6 +37,12 @@ def test_calculate_tax_invalid_price():
         calculate_tax(-1, tax_rate=10)
 
 
-def test_calculate_tax_invalid_tax_rate():
+def test_calculate_tax_invalid_tax_rate_below_zero():
     with pytest.raises(ValueError):
         calculate_tax(100, tax_rate=-1)
+
+
+def test_calculate_tax_invalid_tax_rate_above_100():
+    with pytest.raises(ValueError):
+        calculate_tax(100, tax_rate=1000)
+
